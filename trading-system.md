@@ -1,4 +1,4 @@
-# Trading System — Nifty/BankNifty Options
+# Trading System — Nifty Options
 ### Built for: Indian Futures & Options Market | Capital: Under 5 Lakhs
 
 ---
@@ -26,15 +26,41 @@ This is your stop-loss size. Position size derives FROM this — not the other w
 ```
 
 **How to calculate lot size from this:**
-1. Define your stop-loss in points (e.g., 20 points on BankNifty options)
-2. BankNifty lot = 15 units, Nifty lot = 25 units
-3. Max risk ₹ ÷ (stop points × lot size) = number of lots
+1. Define your stop-loss in points (e.g., 20 points on Nifty options)
+2. Nifty lot = 65 units
+3. Max risk ₹ ÷ (stop points × 65) = number of lots
 
-Example — BankNifty option trade:
-- Max risk: ₹5,000
-- Stop: 25 points from entry
-- BankNifty lot size: 15
-- Max lots = 5000 ÷ (25 × 15) = 13.3 → trade 1 lot only
+---
+
+**Example — Nifty option trade (wider stop):**
+
+| Parameter | Value |
+|---|---|
+| Capital | ₹5,00,000 |
+| Max risk (1%) | ₹5,000 |
+| Nifty lot size | 65 |
+| Entry (option premium) | ₹120 |
+| Stop-loss (option premium) | ₹90 |
+| Stop in points | 120 − 90 = **30 points** |
+| Max lots | 5000 ÷ (30 × 65) = 2.56 → **trade 1 lot** |
+| Actual risk | 30 × 65 × 1 = **₹1,950** (well within 1%) |
+
+**Scenario — Stop hit:** You lose ₹1,950. Account: ₹4,98,050. Move on.
+**Scenario — Target hit (2R):** You gain ₹3,900. Account: ₹5,03,900.
+
+---
+
+**Example — Nifty option trade (tighter stop):**
+
+---
+
+**The formula always:**
+```
+Lots = Max Risk ÷ (Stop Points × 65)
+     = ₹5,000 ÷ (stop × 65)      ← for Nifty
+
+Round DOWN to nearest whole lot. Never round up.
+```
 
 **Never reverse-engineer lots first and justify the risk after.**
 
@@ -138,7 +164,7 @@ You do not enter a trade that you cannot fill this out for. If you cannot articu
 
 ### Options-Specific Notes
 
-Options decay (theta) works against you every day. For Nifty/BankNifty options:
+Options decay (theta) works against you every day. For Nifty options:
 - Avoid holding options through weekends unless you have a strong directional conviction
 - Do not buy deep OTM options as lottery tickets — this is disguised gambling
 - Prefer slightly OTM or ATM options for defined-risk directional trades
@@ -151,7 +177,7 @@ Options decay (theta) works against you every day. For Nifty/BankNifty options:
 ### Before Market Open (8:45 AM – 9:15 AM)
 
 ```
-[ ] Review Nifty and BankNifty daily chart — what is the higher timeframe context?
+[ ] Review Nifty daily chart — what is the higher timeframe context?
 [ ] Mark key S/R levels on 1hr chart (use yesterday's high/low, weekly pivot, recent structure)
 [ ] Note the trend: uptrend / downtrend / sideways
 [ ] Identify 2–3 areas where a valid setup could form today
@@ -199,7 +225,7 @@ Fill this for every trade, win or lose:
 
 ```
 DATE          :
-INSTRUMENT    : Nifty / BankNifty Options — [strike] [CE/PE] [expiry]
+INSTRUMENT    : Nifty Options — [strike] [CE/PE] [expiry]
 SETUP TYPE    : TST / BOF / BPB / PB / CPB
 TIMEFRAME     : 5min / 15min entry, 1hr context
 ENTRY         : ₹___  at ___:___ (time)
